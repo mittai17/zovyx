@@ -1,0 +1,22 @@
+// Default signing values for shared/repo builds.
+// Auto-selected local team overrides live in .local-signing.xcconfig (git-ignored).
+// Manual local overrides can go in LocalSigning.xcconfig (git-ignored).
+
+#include "Config/Version.xcconfig"
+
+ZUVIX_CODE_SIGN_STYLE = Manual
+ZUVIX_DEVELOPMENT_TEAM = Y5PE65HELJ
+
+ZUVIX_APP_BUNDLE_ID = ai.zuvix.client
+ZUVIX_SHARE_BUNDLE_ID = ai.zuvix.client.share
+ZUVIX_WATCH_APP_BUNDLE_ID = ai.zuvix.client.watchkitapp
+ZUVIX_WATCH_EXTENSION_BUNDLE_ID = ai.zuvix.client.watchkitapp.extension
+ZUVIX_ACTIVITY_WIDGET_BUNDLE_ID = ai.zuvix.client.activitywidget
+
+ZUVIX_APP_PROFILE = ai.zuvix.client Development
+ZUVIX_SHARE_PROFILE = ai.zuvix.client.share Development
+
+// Keep local includes after defaults: xcconfig is evaluated top-to-bottom,
+// so later assignments in local files override the defaults above.
+#include? ".local-signing.xcconfig"
+#include? "LocalSigning.xcconfig"

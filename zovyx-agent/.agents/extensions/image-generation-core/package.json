@@ -1,0 +1,10 @@
+{
+  "name": "@zuvix/image-generation-core",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix image generation runtime package",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@zuvix/admin-http-rpc",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix admin HTTP RPC endpoint",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

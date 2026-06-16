@@ -1,0 +1,31 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zuvix">
+  <defs>
+    <linearGradient id="z-bg" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e0a3c"/>
+      <stop offset="0.5" stop-color="#6d28d9"/>
+      <stop offset="1" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="z-arc-warm" x1="20" y1="20" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9d5ff"/>
+      <stop offset="1" stop-color="#fbcfe8"/>
+    </linearGradient>
+    <linearGradient id="z-arc-cool" x1="100" y1="20" x2="20" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <filter id="z-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="8" y="8" width="104" height="104" rx="26" fill="url(#z-bg)"/>
+  <g filter="url(#z-glow)">
+    <path d="M60 28 A24 24 0 0 1 84 52 A24 24 0 0 1 72 70" stroke="url(#z-arc-warm)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+    <path d="M60 92 A24 24 0 0 1 36 68 A24 24 0 0 1 48 50" stroke="url(#z-arc-cool)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+    <circle cx="60" cy="60" r="4.5" fill="#fdf4ff"/>
+    <circle cx="60" cy="60" r="7" stroke="#fdf4ff" stroke-width="1.5" stroke-opacity="0.4" fill="none"/>
+  </g>
+</svg>

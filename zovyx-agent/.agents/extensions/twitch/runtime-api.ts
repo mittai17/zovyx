@@ -1,0 +1,22 @@
+// Private runtime barrel for the bundled Twitch extension.
+// Keep this barrel thin and aligned with the local extension surface.
+
+export type {
+  ChannelAccountSnapshot,
+  ChannelCapabilities,
+  ChannelGatewayContext,
+  ChannelLogSink,
+  ChannelMessageActionAdapter,
+  ChannelMessageActionContext,
+  ChannelMeta,
+  ChannelOutboundAdapter,
+  ChannelOutboundContext,
+  ChannelResolveKind,
+  ChannelResolveResult,
+  ChannelStatusAdapter,
+} from "zuvix/plugin-sdk/channel-contract";
+export type { ChannelPlugin } from "zuvix/plugin-sdk/channel-core";
+export type { OutboundDeliveryResult } from "zuvix/plugin-sdk/channel-send-result";
+export type { ZuvixConfig } from "zuvix/plugin-sdk/config-contracts";
+export type { RuntimeEnv } from "zuvix/plugin-sdk/runtime";
+export type { WizardPrompter } from "zuvix/plugin-sdk/setup";

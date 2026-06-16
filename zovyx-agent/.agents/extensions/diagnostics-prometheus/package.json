@@ -1,0 +1,34 @@
+{
+  "name": "@zuvix/diagnostics-prometheus",
+  "version": "2026.6.2",
+  "description": "Zuvix diagnostics Prometheus exporter for runtime metrics.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "clawhubSpec": "clawhub:@zuvix/diagnostics-prometheus",
+      "npmSpec": "@zuvix/diagnostics-prometheus",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.4.25"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2"
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true
+    }
+  }
+}

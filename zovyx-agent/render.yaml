@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: zuvix
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: ZUVIX_GATEWAY_PORT
+        value: "8080"
+      - key: ZUVIX_STATE_DIR
+        value: /data/.zuvix
+      - key: ZUVIX_WORKSPACE_DIR
+        value: /data/workspace
+      - key: ZUVIX_GATEWAY_TOKEN
+        generateValue: true
+    disk:
+      name: zuvix-data
+      mountPath: /data
+      sizeGB: 1

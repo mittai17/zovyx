@@ -1,0 +1,27 @@
+{
+  "name": "@zuvix/workboard",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix dashboard workboard plugin",
+  "type": "module",
+  "dependencies": {
+    "typebox": "1.1.39"
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

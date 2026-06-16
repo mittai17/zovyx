@@ -1,0 +1,1 @@
+Deploying Zuvix on Fly.io

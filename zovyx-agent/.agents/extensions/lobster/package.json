@@ -1,0 +1,37 @@
+{
+  "name": "@zuvix/lobster",
+  "version": "2026.6.2",
+  "description": "Lobster workflow tool plugin for typed pipelines and resumable approvals.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "dependencies": {
+    "@clawdbot/lobster": "2026.5.22",
+    "typebox": "1.1.39"
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "npmSpec": "@zuvix/lobster",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.4.25"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2"
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true
+    }
+  }
+}

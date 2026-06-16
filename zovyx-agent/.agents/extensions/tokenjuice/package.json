@@ -1,0 +1,47 @@
+{
+  "name": "@zuvix/tokenjuice",
+  "version": "2026.6.2",
+  "description": "Zuvix tokenjuice exec output compaction plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "dependencies": {
+    "tokenjuice": "0.8.0"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "clawhubSpec": "clawhub:@zuvix/tokenjuice",
+      "npmSpec": "@zuvix/tokenjuice",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.5.28"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2",
+      "bundledDist": false
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true
+    }
+  }
+}

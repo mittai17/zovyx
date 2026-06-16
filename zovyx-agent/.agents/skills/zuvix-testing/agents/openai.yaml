@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zuvix Testing"
+  short_description: "Choose cheap, targeted Zuvix validation"
+  default_prompt: "Use $zuvix-testing to choose the cheapest safe test or CI verification path, inspect failures, and rerun only the relevant Zuvix lane."

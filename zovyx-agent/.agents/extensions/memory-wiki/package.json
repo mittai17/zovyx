@@ -1,0 +1,29 @@
+{
+  "name": "@zuvix/memory-wiki",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix persistent wiki plugin",
+  "type": "module",
+  "dependencies": {
+    "typebox": "1.1.39",
+    "yaml": "2.9.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

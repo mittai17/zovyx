@@ -1,0 +1,15 @@
+{
+  "name": "@zuvix/sglang-provider",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix SGLang provider plugin",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

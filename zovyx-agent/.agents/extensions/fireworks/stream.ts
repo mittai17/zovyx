@@ -1,0 +1,40 @@
+// Fireworks plugin module implements stream behavior.
+import type { StreamFn } from "zuvix/plugin-sdk/agent-core";
+import { streamSimple } from "zuvix/plugin-sdk/llm";
+import type { ProviderWrapStreamFnContext } from "zuvix/plugin-sdk/plugin-entry";
+import { normalizeProviderId } from "zuvix/plugin-sdk/provider-model-shared";
+import { streamWithPayloadPatch } from "zuvix/plugin-sdk/provider-stream-shared";
+import { isFireworksKimiModelId } from "./model-id.js";
+
+function isFireworksProviderId(providerId: string): boolean {
+  const normalized = normalizeProviderId(providerId);
+  return normalized === "fireworks" || normalized === "fireworks-ai";
+}
+
+export function createFireworksKimiThinkingDisabledWrapper(
+  baseStreamFn: StreamFn | undefined,
+): StreamFn {
+  const underlying = baseStreamFn ?? streamSimple;
+  return (model, context, options) =>
+    streamWithPayloadPatch(underlying, model, context, options, (payloadObj) => {
+      // Fireworks Kimi can emit chain-of-thought in visible `content` unless
+      // the Anthropic-style thinking toggle is explicitly disabled.
+      payloadObj.thinking = { type: "disabled" };
+      delete payloadObj.reasoning;
+      delete payloadObj.reasoning_effort;
+      delete payloadObj.reasoningEffort;
+    });
+}
+
+export function wrapFireworksProviderStream(
+  ctx: ProviderWrapStreamFnContext,
+): StreamFn | undefined {
+  if (
+    !isFireworksProviderId(ctx.provider) ||
+    ctx.model?.api !== "openai-completions" ||
+    !isFireworksKimiModelId(ctx.modelId)
+  ) {
+    return undefined;
+  }
+  return createFireworksKimiThinkingDisabledWrapper(ctx.streamFn);
+}

@@ -1,0 +1,17 @@
+// Copy to LocalSigning.xcconfig for personal local signing overrides.
+// This file is only an example and should stay committed.
+
+ZUVIX_CODE_SIGN_STYLE = Automatic
+ZUVIX_DEVELOPMENT_TEAM = YOUR_TEAM_ID
+
+ZUVIX_APP_BUNDLE_ID = ai.zuvix.client
+ZUVIX_SHARE_BUNDLE_ID = ai.zuvix.client.share
+ZUVIX_ACTIVITY_WIDGET_BUNDLE_ID = ai.zuvix.client.activitywidget
+ZUVIX_WATCH_APP_BUNDLE_ID = ai.zuvix.client.watchkitapp
+ZUVIX_WATCH_EXTENSION_BUNDLE_ID = ai.zuvix.client.watchkitapp.extension
+
+// Leave empty with automatic signing.
+ZUVIX_APP_PROFILE =
+ZUVIX_SHARE_PROFILE =
+ZUVIX_WATCH_APP_PROFILE =
+ZUVIX_WATCH_EXTENSION_PROFILE =

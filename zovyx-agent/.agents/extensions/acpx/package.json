@@ -1,0 +1,50 @@
+{
+  "name": "@zuvix/acpx",
+  "version": "2026.6.2",
+  "description": "Zuvix ACP runtime backend with plugin-owned session and transport management.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "dependencies": {
+    "@agentclientprotocol/claude-agent-acp": "0.39.0",
+    "@zed-industries/codex-acp": "0.15.0",
+    "acpx": "0.10.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "npmSpec": "@zuvix/acpx",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.4.25"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2",
+      "staticAssets": [
+        {
+          "source": "./src/runtime-internals/mcp-proxy.mjs",
+          "output": "mcp-proxy.mjs"
+        },
+        {
+          "source": "./src/runtime-internals/mcp-command-line.mjs",
+          "output": "mcp-command-line.mjs"
+        }
+      ]
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true,
+      "bundleRuntimeDependencies": false
+    }
+  }
+}

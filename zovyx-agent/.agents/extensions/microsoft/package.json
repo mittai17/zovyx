@@ -1,0 +1,18 @@
+{
+  "name": "@zuvix/microsoft-speech",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix Microsoft speech plugin",
+  "type": "module",
+  "dependencies": {
+    "node-edge-tts": "1.2.10"
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

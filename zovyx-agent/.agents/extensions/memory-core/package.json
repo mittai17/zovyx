@@ -1,0 +1,29 @@
+{
+  "name": "@zuvix/memory-core",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix core memory search plugin",
+  "type": "module",
+  "dependencies": {
+    "chokidar": "5.0.0",
+    "json5": "2.2.3",
+    "typebox": "1.1.39"
+  },
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

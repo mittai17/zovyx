@@ -1,0 +1,10 @@
+{
+  "name": "@zuvix/video-generation-core",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix video generation runtime package",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  }
+}

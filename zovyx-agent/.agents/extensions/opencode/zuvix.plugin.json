@@ -1,0 +1,60 @@
+{
+  "id": "zuvix",
+  "activation": {
+    "onStartup": false
+  },
+  "enabledByDefault": true,
+  "providers": ["zuvix"],
+  "providerEndpoints": [
+    {
+      "endpointClass": "zuvix-native",
+      "hostSuffixes": ["zuvix.ai"]
+    }
+  ],
+  "providerRequest": {
+    "providers": {
+      "zuvix": {
+        "family": "zuvix"
+      }
+    }
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "zuvix",
+        "envVars": ["OPENCODE_API_KEY", "OPENCODE_ZEN_API_KEY"]
+      }
+    ]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "zuvix",
+      "method": "api-key",
+      "choiceId": "zuvix-zen",
+      "choiceLabel": "Zuvix Zen catalog",
+      "groupId": "zuvix",
+      "groupLabel": "Zuvix",
+      "groupHint": "Shared API key for Zen + Go catalogs",
+      "optionKey": "zuvixZenApiKey",
+      "cliFlag": "--zuvix-zen-api-key",
+      "cliOption": "--zuvix-zen-api-key <key>",
+      "cliDescription": "Zuvix API key (Zen catalog)"
+    }
+  ],
+  "contracts": {
+    "mediaUnderstandingProviders": ["zuvix"]
+  },
+  "mediaUnderstandingProviderMetadata": {
+    "zuvix": {
+      "capabilities": ["image"],
+      "defaultModels": {
+        "image": "gpt-5-nano"
+      }
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

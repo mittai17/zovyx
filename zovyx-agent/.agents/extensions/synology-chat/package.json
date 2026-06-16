@@ -1,0 +1,46 @@
+{
+  "name": "@zuvix/synology-chat",
+  "version": "2026.6.2",
+  "description": "Synology Chat channel plugin for Zuvix channels and direct messages.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "setupEntry": "./setup-entry.ts",
+    "channel": {
+      "id": "synology-chat",
+      "label": "Synology Chat",
+      "selectionLabel": "Synology Chat (Webhook)",
+      "docsPath": "/channels/synology-chat",
+      "docsLabel": "synology-chat",
+      "blurb": "Connect your Synology NAS Chat to Zuvix with full agent capabilities.",
+      "order": 90
+    },
+    "install": {
+      "npmSpec": "@zuvix/synology-chat",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.4.10"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2"
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true
+    }
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  }
+}

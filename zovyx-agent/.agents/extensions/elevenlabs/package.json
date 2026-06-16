@@ -1,0 +1,15 @@
+{
+  "name": "@zuvix/elevenlabs-speech",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix ElevenLabs speech plugin",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

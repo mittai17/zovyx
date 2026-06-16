@@ -1,0 +1,15 @@
+{
+  "name": "@zuvix/huggingface-provider",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix Hugging Face provider plugin",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

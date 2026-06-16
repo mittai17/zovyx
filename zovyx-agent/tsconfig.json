@@ -1,0 +1,233 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2023", "ScriptHost"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "noUncheckedSideEffectImports": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2023",
+    "types": ["node"],
+    "useDefineForClassFields": false,
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "zuvix/extension-api": ["./src/extensionAPI.ts"],
+      "zuvix/plugin-sdk": ["./src/plugin-sdk/index.ts"],
+      "zuvix/plugin-sdk/*": ["./src/plugin-sdk/*.ts"],
+      "@zuvix/agent-core": ["./packages/agent-core/src/index.ts"],
+      "@zuvix/agent-core/*": ["./packages/agent-core/src/*"],
+      "@zuvix/llm-core": ["./packages/llm-core/src/index.ts"],
+      "@zuvix/llm-core/diagnostics": ["./packages/llm-core/src/utils/diagnostics.ts"],
+      "@zuvix/llm-core/event-stream": ["./packages/llm-core/src/utils/event-stream.ts"],
+      "@zuvix/llm-core/validation": ["./packages/llm-core/src/validation.ts"],
+      "@zuvix/llm-core/*": ["./packages/llm-core/src/*"],
+      "@zuvix/llm-runtime": ["./packages/llm-runtime/src/index.ts"],
+      "@zuvix/llm-runtime/*": ["./packages/llm-runtime/src/*"],
+      "@zuvix/model-catalog-core": ["./packages/model-catalog-core/src/index.ts"],
+      "@zuvix/model-catalog-core/configured-model-refs": [
+        "./packages/model-catalog-core/src/configured-model-refs.ts"
+      ],
+      "@zuvix/model-catalog-core/model-catalog-normalize": [
+        "./packages/model-catalog-core/src/model-catalog-normalize.ts"
+      ],
+      "@zuvix/model-catalog-core/model-catalog-refs": [
+        "./packages/model-catalog-core/src/model-catalog-refs.ts"
+      ],
+      "@zuvix/model-catalog-core/model-catalog-types": [
+        "./packages/model-catalog-core/src/model-catalog-types.ts"
+      ],
+      "@zuvix/model-catalog-core/provider-id": [
+        "./packages/model-catalog-core/src/provider-id.ts"
+      ],
+      "@zuvix/model-catalog-core/provider-model-id-normalization": [
+        "./packages/model-catalog-core/src/provider-model-id-normalization.ts"
+      ],
+      "@zuvix/model-catalog-core/provider-model-id-normalize": [
+        "./packages/model-catalog-core/src/provider-model-id-normalize.ts"
+      ],
+      "@zuvix/model-catalog-core/*": ["./packages/model-catalog-core/src/*"],
+      "@zuvix/gateway-client": ["./packages/gateway-client/src/index.ts"],
+      "@zuvix/gateway-client/*": ["./packages/gateway-client/src/*"],
+      "@zuvix/gateway-protocol": ["./packages/gateway-protocol/src/index.ts"],
+      "@zuvix/gateway-protocol/client-info": [
+        "./packages/gateway-protocol/src/client-info.ts"
+      ],
+      "@zuvix/gateway-protocol/connect-error-details": [
+        "./packages/gateway-protocol/src/connect-error-details.ts"
+      ],
+      "@zuvix/gateway-protocol/schema": ["./packages/gateway-protocol/src/schema.ts"],
+      "@zuvix/gateway-protocol/startup-unavailable": [
+        "./packages/gateway-protocol/src/startup-unavailable.ts"
+      ],
+      "@zuvix/gateway-protocol/version": ["./packages/gateway-protocol/src/version.ts"],
+      "@zuvix/gateway-protocol/*": ["./packages/gateway-protocol/src/*"],
+      "@zuvix/media-generation-core": ["./packages/media-generation-core/src/index.ts"],
+      "@zuvix/media-generation-core/capability-model-ref": [
+        "./packages/media-generation-core/src/capability-model-ref.ts"
+      ],
+      "@zuvix/media-generation-core/catalog": [
+        "./packages/media-generation-core/src/catalog.ts"
+      ],
+      "@zuvix/media-generation-core/model-ref": [
+        "./packages/media-generation-core/src/model-ref.ts"
+      ],
+      "@zuvix/media-generation-core/normalization": [
+        "./packages/media-generation-core/src/normalization.ts"
+      ],
+      "@zuvix/media-generation-core/*": ["./packages/media-generation-core/src/*"],
+      "@zuvix/media-core": ["./packages/media-core/src/index.ts"],
+      "@zuvix/media-core/base64": ["./packages/media-core/src/base64.ts"],
+      "@zuvix/media-core/constants": ["./packages/media-core/src/constants.ts"],
+      "@zuvix/media-core/content-length": ["./packages/media-core/src/content-length.ts"],
+      "@zuvix/media-core/file-name": ["./packages/media-core/src/file-name.ts"],
+      "@zuvix/media-core/inbound-path-policy": [
+        "./packages/media-core/src/inbound-path-policy.ts"
+      ],
+      "@zuvix/media-core/inline-image-data-url": [
+        "./packages/media-core/src/inline-image-data-url.ts"
+      ],
+      "@zuvix/media-core/media-source-url": [
+        "./packages/media-core/src/media-source-url.ts"
+      ],
+      "@zuvix/media-core/mime": ["./packages/media-core/src/mime.ts"],
+      "@zuvix/media-core/read-byte-stream-with-limit": [
+        "./packages/media-core/src/read-byte-stream-with-limit.ts"
+      ],
+      "@zuvix/media-core/read-response-with-limit": [
+        "./packages/media-core/src/read-response-with-limit.ts"
+      ],
+      "@zuvix/media-core/*": ["./packages/media-core/src/*"],
+      "@zuvix/media-understanding-common": [
+        "./packages/media-understanding-common/src/index.ts"
+      ],
+      "@zuvix/media-understanding-common/*": [
+        "./packages/media-understanding-common/src/*"
+      ],
+      "@zuvix/markdown-core": ["./packages/markdown-core/src/index.ts"],
+      "@zuvix/markdown-core/code-spans": ["./packages/markdown-core/src/code-spans.ts"],
+      "@zuvix/markdown-core/fences": ["./packages/markdown-core/src/fences.ts"],
+      "@zuvix/markdown-core/frontmatter": ["./packages/markdown-core/src/frontmatter.ts"],
+      "@zuvix/markdown-core/ir": ["./packages/markdown-core/src/ir.ts"],
+      "@zuvix/markdown-core/render": ["./packages/markdown-core/src/render.ts"],
+      "@zuvix/markdown-core/render-aware-chunking": [
+        "./packages/markdown-core/src/render-aware-chunking.ts"
+      ],
+      "@zuvix/markdown-core/tables": ["./packages/markdown-core/src/tables.ts"],
+      "@zuvix/markdown-core/types": ["./packages/markdown-core/src/types.ts"],
+      "@zuvix/markdown-core/*": ["./packages/markdown-core/src/*"],
+      "@zuvix/normalization-core": ["./packages/normalization-core/src/index.ts"],
+      "@zuvix/normalization-core/number-coercion": [
+        "./packages/normalization-core/src/number-coercion.ts"
+      ],
+      "@zuvix/normalization-core/record-coerce": [
+        "./packages/normalization-core/src/record-coerce.ts"
+      ],
+      "@zuvix/normalization-core/string-coerce": [
+        "./packages/normalization-core/src/string-coerce.ts"
+      ],
+      "@zuvix/normalization-core/string-normalization": [
+        "./packages/normalization-core/src/string-normalization.ts"
+      ],
+      "@zuvix/normalization-core/*": ["./packages/normalization-core/src/*"],
+      "@zuvix/acp-core": ["./packages/acp-core/src/index.ts"],
+      "@zuvix/acp-core/meta": ["./packages/acp-core/src/meta.ts"],
+      "@zuvix/acp-core/numeric-options": ["./packages/acp-core/src/numeric-options.ts"],
+      "@zuvix/acp-core/normalize-text": ["./packages/acp-core/src/normalize-text.ts"],
+      "@zuvix/acp-core/record-shared": ["./packages/acp-core/src/record-shared.ts"],
+      "@zuvix/acp-core/session": ["./packages/acp-core/src/session.ts"],
+      "@zuvix/acp-core/session-interaction-mode": [
+        "./packages/acp-core/src/session-interaction-mode.ts"
+      ],
+      "@zuvix/acp-core/session-lineage-meta": [
+        "./packages/acp-core/src/session-lineage-meta.ts"
+      ],
+      "@zuvix/acp-core/types": ["./packages/acp-core/src/types.ts"],
+      "@zuvix/acp-core/runtime/error-text": [
+        "./packages/acp-core/src/runtime/error-text.ts"
+      ],
+      "@zuvix/acp-core/runtime/errors": ["./packages/acp-core/src/runtime/errors.ts"],
+      "@zuvix/acp-core/runtime/session-identifiers": [
+        "./packages/acp-core/src/runtime/session-identifiers.ts"
+      ],
+      "@zuvix/acp-core/runtime/session-identity": [
+        "./packages/acp-core/src/runtime/session-identity.ts"
+      ],
+      "@zuvix/acp-core/runtime/types": ["./packages/acp-core/src/runtime/types.ts"],
+      "@zuvix/acp-core/*": ["./packages/acp-core/src/*"],
+      "@zuvix/terminal-core": ["./packages/terminal-core/src/index.ts"],
+      "@zuvix/terminal-core/ansi": ["./packages/terminal-core/src/ansi.ts"],
+      "@zuvix/terminal-core/decorative-emoji": [
+        "./packages/terminal-core/src/decorative-emoji.ts"
+      ],
+      "@zuvix/terminal-core/health-style": [
+        "./packages/terminal-core/src/health-style.ts"
+      ],
+      "@zuvix/terminal-core/links": ["./packages/terminal-core/src/links.ts"],
+      "@zuvix/terminal-core/note": ["./packages/terminal-core/src/note.ts"],
+      "@zuvix/terminal-core/osc-progress": ["./packages/terminal-core/src/osc-progress.ts"],
+      "@zuvix/terminal-core/palette": ["./packages/terminal-core/src/palette.ts"],
+      "@zuvix/terminal-core/progress-line": [
+        "./packages/terminal-core/src/progress-line.ts"
+      ],
+      "@zuvix/terminal-core/prompt-select-styled": [
+        "./packages/terminal-core/src/prompt-select-styled.ts"
+      ],
+      "@zuvix/terminal-core/prompt-select-styled-params": [
+        "./packages/terminal-core/src/prompt-select-styled-params.ts"
+      ],
+      "@zuvix/terminal-core/prompt-style": [
+        "./packages/terminal-core/src/prompt-style.ts"
+      ],
+      "@zuvix/terminal-core/restore": ["./packages/terminal-core/src/restore.ts"],
+      "@zuvix/terminal-core/safe-text": ["./packages/terminal-core/src/safe-text.ts"],
+      "@zuvix/terminal-core/stream-writer": [
+        "./packages/terminal-core/src/stream-writer.ts"
+      ],
+      "@zuvix/terminal-core/table": ["./packages/terminal-core/src/table.ts"],
+      "@zuvix/terminal-core/terminal-link": [
+        "./packages/terminal-core/src/terminal-link.ts"
+      ],
+      "@zuvix/terminal-core/theme": ["./packages/terminal-core/src/theme.ts"],
+      "@zuvix/terminal-core/*": ["./packages/terminal-core/src/*"],
+      "@zuvix/net-policy": ["./packages/net-policy/src/index.ts"],
+      "@zuvix/net-policy/ip": ["./packages/net-policy/src/ip.ts"],
+      "@zuvix/net-policy/ipv4": ["./packages/net-policy/src/ipv4.ts"],
+      "@zuvix/net-policy/redact-sensitive-url": [
+        "./packages/net-policy/src/redact-sensitive-url.ts"
+      ],
+      "@zuvix/net-policy/url-userinfo": ["./packages/net-policy/src/url-userinfo.ts"],
+      "@zuvix/net-policy/*": ["./packages/net-policy/src/*"],
+      "@zuvix/web-content-core": ["./packages/web-content-core/src/index.ts"],
+      "@zuvix/web-content-core/provider-runtime-shared": [
+        "./packages/web-content-core/src/provider-runtime-shared.ts"
+      ],
+      "@zuvix/web-content-core/*": ["./packages/web-content-core/src/*"],
+      "@zuvix/speech-core": ["./packages/speech-core/runtime-api.ts"],
+      "@zuvix/speech-core/api": ["./packages/speech-core/api.ts"],
+      "@zuvix/speech-core/runtime-api": ["./packages/speech-core/runtime-api.ts"],
+      "@zuvix/speech-core/speaker": ["./packages/speech-core/speaker.ts"],
+      "@zuvix/speech-core/voice-models": ["./packages/speech-core/voice-models.ts"],
+      "@zuvix/speech-core/*": ["./packages/speech-core/*"],
+      "@zuvix/sdk": ["./packages/sdk/src/index.ts"],
+      "@zuvix/plugin-sdk": ["./src/plugin-sdk/index.ts"],
+      "@zuvix/plugin-sdk/*": ["./src/plugin-sdk/*.ts"],
+      "zuvix/plugin-sdk/account-id": ["./src/plugin-sdk/account-id.ts"],
+      "@zuvix/*": ["./extensions/*"]
+    }
+  },
+  "include": ["src/**/*", "ui/**/*", "extensions/**/*", "packages/**/*"],
+  "exclude": ["node_modules", "dist", "**/dist/**"]
+}

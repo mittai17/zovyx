@@ -1,0 +1,31 @@
+{
+  "name": "@zuvix/qa-matrix",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix Matrix QA runner plugin",
+  "type": "module",
+  "dependencies": {
+    "undici": "8.3.0"
+  },
+  "devDependencies": {
+    "@zuvix/matrix": "workspace:*",
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    }
+  }
+}

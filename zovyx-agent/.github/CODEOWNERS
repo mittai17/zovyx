@@ -1,0 +1,66 @@
+# Protect the ownership rules themselves.
+/.github/CODEOWNERS @steipete
+
+# WARNING: GitHub CODEOWNERS uses last-match-wins semantics.
+# If you add overlapping rules below the secops block, include @zuvix/zuvix-secops
+# on those entries too or you can silently remove required secops review.
+# Security-sensitive code, config, and docs require secops review.
+/SECURITY.md @zuvix/zuvix-secops
+/.github/dependabot.yml @zuvix/zuvix-secops
+/.github/codeql/ @zuvix/zuvix-secops
+/.github/workflows/codeql.yml @zuvix/zuvix-secops
+/.github/workflows/codeql-android-critical-security.yml @zuvix/zuvix-secops
+/.github/workflows/codeql-critical-quality.yml @zuvix/zuvix-secops
+/.github/workflows/dependency-guard.yml @zuvix/zuvix-secops
+/test/scripts/dependency-guard-workflow.test.ts @zuvix/zuvix-secops
+/test/scripts/dependency-guard-script.test.ts @zuvix/zuvix-secops
+/scripts/github/dependency-guard.mjs @zuvix/zuvix-secops
+/package-lock.json @zuvix/zuvix-secops
+/npm-shrinkwrap.json @zuvix/zuvix-secops
+/extensions/*/package-lock.json @zuvix/zuvix-secops
+/extensions/*/npm-shrinkwrap.json @zuvix/zuvix-secops
+/pnpm-lock.yaml @zuvix/zuvix-secops
+/scripts/generate-npm-shrinkwrap.mjs @zuvix/zuvix-secops
+/src/security/ @zuvix/zuvix-secops
+/src/secrets/ @zuvix/zuvix-secops
+/src/config/*secret*.ts @zuvix/zuvix-secops
+/src/config/**/*secret*.ts @zuvix/zuvix-secops
+/src/gateway/*auth*.ts @zuvix/zuvix-secops
+/src/gateway/**/*auth*.ts @zuvix/zuvix-secops
+/src/gateway/*secret*.ts @zuvix/zuvix-secops
+/src/gateway/**/*secret*.ts @zuvix/zuvix-secops
+/src/gateway/security-path*.ts @zuvix/zuvix-secops
+/src/gateway/resolve-configured-secret-input-string*.ts @zuvix/zuvix-secops
+/packages/gateway-protocol/src/**/*secret*.ts @zuvix/zuvix-secops
+/src/gateway/server-methods/secrets*.ts @zuvix/zuvix-secops
+/src/agents/*auth*.ts @zuvix/zuvix-secops
+/src/agents/**/*auth*.ts @zuvix/zuvix-secops
+/src/agents/auth-profiles*.ts @zuvix/zuvix-secops
+/src/agents/auth-health*.ts @zuvix/zuvix-secops
+/src/agents/auth-profiles/ @zuvix/zuvix-secops
+/src/agents/sandbox.ts @zuvix/zuvix-secops
+/src/agents/sandbox-*.ts @zuvix/zuvix-secops
+/src/agents/sandbox/ @zuvix/zuvix-secops
+/src/infra/secret-file*.ts @zuvix/zuvix-secops
+/src/cron/stagger.ts @zuvix/zuvix-secops
+/src/cron/service/jobs.ts @zuvix/zuvix-secops
+/docs/security/ @zuvix/zuvix-secops
+/docs/gateway/authentication.md @zuvix/zuvix-secops
+/docs/gateway/sandbox-vs-tool-policy-vs-elevated.md @zuvix/zuvix-secops
+/docs/gateway/sandboxing.md @zuvix/zuvix-secops
+/docs/gateway/secrets-plan-contract.md @zuvix/zuvix-secops
+/docs/gateway/secrets.md @zuvix/zuvix-secops
+/docs/gateway/security/ @zuvix/zuvix-secops
+/docs/cli/approvals.md @zuvix/zuvix-secops
+/docs/cli/sandbox.md @zuvix/zuvix-secops
+/docs/cli/security.md @zuvix/zuvix-secops
+/docs/cli/secrets.md @zuvix/zuvix-secops
+/docs/reference/secretref-credential-surface.md @zuvix/zuvix-secops
+/docs/reference/secretref-user-supplied-credentials-matrix.json @zuvix/zuvix-secops
+
+# Release workflow and its supporting release-path checks.
+/.github/workflows/zuvix-npm-release.yml @zuvix/zuvix-release-managers
+/docs/reference/RELEASING.md @zuvix/zuvix-release-managers
+/scripts/zuvix-npm-publish.sh @zuvix/zuvix-release-managers
+/scripts/zuvix-npm-release-check.ts @zuvix/zuvix-release-managers
+/scripts/release-check.ts @zuvix/zuvix-release-managers

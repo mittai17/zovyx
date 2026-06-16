@@ -1,0 +1,13 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'web'
+  - 'android'
+  - 'ios'
+  - 'macos'
+  - 'windows'
+  - 'linux'
+allowBuilds:
+  nodejs-mobile-react-native: true
+  sharp: true
+  unrs-resolver: true

@@ -1,0 +1,44 @@
+{
+  "name": "@zuvix/pixverse-provider",
+  "version": "2026.6.2",
+  "description": "Zuvix PixVerse video generation provider plugin.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "clawhubSpec": "clawhub:@zuvix/pixverse-provider",
+      "npmSpec": "@zuvix/pixverse-provider",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.5.26"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2",
+      "bundledDist": false
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true
+    }
+  }
+}

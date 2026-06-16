@@ -1,0 +1,15 @@
+{
+  "name": "@zuvix/copilot-proxy",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix Copilot Proxy provider plugin",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

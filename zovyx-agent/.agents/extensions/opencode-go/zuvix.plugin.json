@@ -1,0 +1,112 @@
+{
+  "id": "zuvix-go",
+  "activation": {
+    "onStartup": false
+  },
+  "providerCatalogEntry": "./provider-discovery.ts",
+  "enabledByDefault": true,
+  "providers": ["zuvix-go"],
+  "providerEndpoints": [
+    {
+      "endpointClass": "zuvix-native",
+      "hostSuffixes": ["zuvix.ai"]
+    }
+  ],
+  "providerRequest": {
+    "providers": {
+      "zuvix-go": {
+        "family": "zuvix"
+      }
+    }
+  },
+  "modelCatalog": {
+    "providers": {
+      "zuvix-go": {
+        "baseUrl": "https://zuvix.ai/zen/go/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": ["text"],
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "cost": {
+              "input": 1.74,
+              "output": 3.48,
+              "cacheRead": 0.145,
+              "cacheWrite": 0
+            },
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "name": "DeepSeek V4 Flash",
+            "reasoning": true,
+            "input": ["text"],
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "cost": {
+              "input": 0.14,
+              "output": 0.28,
+              "cacheRead": 0.028,
+              "cacheWrite": 0
+            },
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens"
+            }
+          }
+        ]
+      }
+    },
+    "discovery": {
+      "zuvix-go": "runtime"
+    }
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "zuvix-go",
+        "envVars": ["OPENCODE_API_KEY", "OPENCODE_ZEN_API_KEY"]
+      }
+    ]
+  },
+  "providerAuthChoices": [
+    {
+      "provider": "zuvix-go",
+      "method": "api-key",
+      "choiceId": "zuvix-go",
+      "choiceLabel": "Zuvix Go catalog",
+      "groupId": "zuvix",
+      "groupLabel": "Zuvix",
+      "groupHint": "Shared API key for Zen + Go catalogs",
+      "optionKey": "zuvixGoApiKey",
+      "cliFlag": "--zuvix-go-api-key",
+      "cliOption": "--zuvix-go-api-key <key>",
+      "cliDescription": "Zuvix API key (Go catalog)"
+    }
+  ],
+  "contracts": {
+    "mediaUnderstandingProviders": ["zuvix-go"]
+  },
+  "mediaUnderstandingProviderMetadata": {
+    "zuvix-go": {
+      "capabilities": ["image"],
+      "defaultModels": {
+        "image": "kimi-k2.6"
+      }
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zuvix-config
+  labels:
+    app: zuvix
+data:
+  zuvix.json: |
+    {
+      "gateway": {
+        "mode": "local",
+        "bind": "loopback",
+        "port": 18789,
+        "auth": {
+          "mode": "token"
+        },
+        "controlUi": {
+          "enabled": true
+        }
+      },
+      "agents": {
+        "defaults": {
+          "workspace": "~/.zuvix/workspace"
+        },
+        "list": [
+          {
+            "id": "default",
+            "name": "Zuvix Assistant",
+            "workspace": "~/.zuvix/workspace"
+          }
+        ]
+      },
+      "cron": { "enabled": false }
+    }
+  AGENTS.md: |
+    # Zuvix Assistant
+
+    You are a helpful AI assistant running in Kubernetes.

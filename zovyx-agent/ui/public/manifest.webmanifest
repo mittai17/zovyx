@@ -1,0 +1,27 @@
+{
+  "name": "Zuvix",
+  "short_name": "Zuvix",
+  "description": "Cloud-synced AI workspace — desktop, web, and mobile",
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#08080e",
+  "background_color": "#08080e",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

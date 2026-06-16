@@ -1,0 +1,60 @@
+{
+  "name": "@zuvix/nextcloud-talk",
+  "version": "2026.6.2",
+  "description": "Zuvix Nextcloud Talk channel plugin for conversations.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zuvix/zuvix"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*",
+    "zuvix": "npm:zuvix@2026.5.28"
+  },
+  "peerDependencies": {
+    "zuvix": ">=2026.6.2"
+  },
+  "peerDependenciesMeta": {
+    "zuvix": {
+      "optional": true
+    }
+  },
+  "zuvix": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "setupEntry": "./setup-entry.ts",
+    "channel": {
+      "id": "nextcloud-talk",
+      "label": "Nextcloud Talk",
+      "selectionLabel": "Nextcloud Talk (self-hosted)",
+      "docsPath": "/channels/nextcloud-talk",
+      "docsLabel": "nextcloud-talk",
+      "blurb": "Self-hosted chat via Nextcloud Talk webhook bots.",
+      "aliases": [
+        "nc-talk",
+        "nc"
+      ],
+      "order": 65,
+      "quickstartAllowFrom": true
+    },
+    "install": {
+      "npmSpec": "@zuvix/nextcloud-talk",
+      "defaultChoice": "npm",
+      "minHostVersion": ">=2026.4.10"
+    },
+    "compat": {
+      "pluginApi": ">=2026.6.2"
+    },
+    "build": {
+      "zuvixVersion": "2026.6.2"
+    },
+    "release": {
+      "publishToClawHub": true,
+      "publishToNpm": true
+    }
+  },
+  "dependencies": {
+    "zod": "4.4.3"
+  }
+}

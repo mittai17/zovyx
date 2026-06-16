@@ -1,0 +1,57 @@
+@import "./styles/base.css";
+@import "./styles/layout.css";
+@import "./styles/layout.mobile.css";
+@import "./styles/components.css";
+@import "./styles/activity.css";
+@import "./styles/chat.css";
+@import "./styles/config.css";
+@import "./styles/config-quick.css";
+@import "./styles/cron-quick-create.css";
+@import "./styles/usage.css";
+@import "./styles/dreams.css";
+@import "./styles/workboard.css";
+@import "./styles/skill-workshop.css";
+@import "@create-markdown/preview/themes/system.css";
+
+.cm-preview {
+  --cm-mono: var(--mono);
+  --cm-link: var(--accent);
+  --cm-info: var(--info);
+  --cm-warning: var(--warn);
+  --cm-success: var(--ok);
+  --cm-danger: var(--danger);
+}
+
+/* Claymorphism — light theme only (applied via CSS variables in base.css) */
+:root[data-theme-mode="light"] {
+  --clay-shadow: inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.03),
+    4px 4px 10px rgba(0, 0, 0, 0.04);
+  --clay-shadow-strong: inset 4px 4px 8px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.05),
+    4px 4px 14px rgba(0, 0, 0, 0.06);
+  --clay-shadow-pressed: inset 4px 4px 8px rgba(0, 0, 0, 0.04),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme-mode="light"] .btn {
+  box-shadow: var(--clay-shadow);
+  border-radius: var(--radius-lg);
+}
+
+:root[data-theme-mode="light"] .btn:active {
+  box-shadow: var(--clay-shadow-pressed);
+}
+
+:root[data-theme-mode="light"] .card {
+  box-shadow: var(--clay-shadow-strong);
+  border-radius: var(--radius-lg);
+}
+
+:root[data-theme-mode="light"] .stat,
+:root[data-theme-mode="light"] .field input,
+:root[data-theme-mode="light"] .field textarea,
+:root[data-theme-mode="light"] .field select,
+:root[data-theme-mode="light"] .login-gate__card {
+  box-shadow: var(--clay-shadow);
+}

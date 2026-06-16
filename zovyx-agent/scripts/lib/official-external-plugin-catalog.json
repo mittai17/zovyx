@@ -1,0 +1,284 @@
+{
+  "entries": [
+    {
+      "name": "@zuvix/acpx",
+      "description": "Zuvix ACP runtime backend",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "acpx",
+          "label": "ACPX Runtime"
+        },
+        "install": {
+          "npmSpec": "@zuvix/acpx",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.25"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/brave-plugin",
+      "description": "Zuvix Brave plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "brave",
+          "label": "Brave"
+        },
+        "webSearchProviders": [
+          {
+            "id": "brave",
+            "label": "Brave Search",
+            "hint": "Brave Search web results.",
+            "onboardingScopes": ["text-inference"],
+            "credentialLabel": "Brave Search API key",
+            "envVars": ["BRAVE_API_KEY"],
+            "placeholder": "BSA...",
+            "signupUrl": "https://api-dashboard.search.brave.com/app/keys",
+            "docsUrl": "https://docs.zuvix.ai/tools/brave-search",
+            "credentialPath": "plugins.entries.brave.config.webSearch.apiKey",
+            "autoDetectOrder": 10
+          }
+        ],
+        "install": {
+          "npmSpec": "@zuvix/brave-plugin",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.10",
+          "allowInvalidConfigRecovery": true
+        }
+      }
+    },
+    {
+      "name": "@zuvix/copilot",
+      "description": "Zuvix GitHub Copilot agent runtime plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "copilot",
+          "label": "GitHub Copilot agent runtime"
+        },
+        "install": {
+          "clawhubSpec": "clawhub:@zuvix/copilot",
+          "npmSpec": "@zuvix/copilot",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.5.28"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/diagnostics-otel",
+      "description": "Zuvix diagnostics OpenTelemetry exporter",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "diagnostics-otel",
+          "label": "Diagnostics OpenTelemetry"
+        },
+        "install": {
+          "clawhubSpec": "clawhub:@zuvix/diagnostics-otel",
+          "npmSpec": "@zuvix/diagnostics-otel",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.25"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/diagnostics-prometheus",
+      "description": "Zuvix diagnostics Prometheus exporter",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "diagnostics-prometheus",
+          "label": "Diagnostics Prometheus"
+        },
+        "install": {
+          "clawhubSpec": "clawhub:@zuvix/diagnostics-prometheus",
+          "npmSpec": "@zuvix/diagnostics-prometheus",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.25"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/diffs",
+      "description": "Zuvix diff viewer plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "diffs",
+          "label": "Diffs"
+        },
+        "install": {
+          "npmSpec": "@zuvix/diffs",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.30"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/diffs-language-pack",
+      "description": "Zuvix diffs viewer syntax highlighting language pack",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "diffs-language-pack",
+          "label": "Diff Viewer Language Pack"
+        },
+        "install": {
+          "npmSpec": "@zuvix/diffs-language-pack",
+          "clawhubSpec": "clawhub:@zuvix/diffs-language-pack",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.5.27"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/google-meet",
+      "description": "Zuvix Google Meet participant plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "google-meet",
+          "label": "Google Meet"
+        },
+        "install": {
+          "npmSpec": "@zuvix/google-meet",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.20"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/lobster",
+      "description": "Lobster workflow tool plugin (typed pipelines + resumable approvals)",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "lobster",
+          "label": "Lobster"
+        },
+        "install": {
+          "npmSpec": "@zuvix/lobster",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.25"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/memory-lancedb",
+      "description": "Zuvix LanceDB-backed long-term memory plugin with auto-recall/capture",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "memory-lancedb",
+          "label": "Memory LanceDB"
+        },
+        "install": {
+          "npmSpec": "@zuvix/memory-lancedb",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.5.31"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/llama-cpp-provider",
+      "description": "Zuvix llama.cpp embedding provider plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "llama-cpp",
+          "label": "llama.cpp Provider"
+        },
+        "contracts": {
+          "embeddingProviders": ["local"]
+        },
+        "install": {
+          "npmSpec": "@zuvix/llama-cpp-provider",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.6.2"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/openshell-sandbox",
+      "description": "Zuvix OpenShell sandbox backend",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "openshell",
+          "label": "OpenShell Sandbox"
+        },
+        "install": {
+          "npmSpec": "@zuvix/openshell-sandbox",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.5.12-beta.1"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/pixverse-provider",
+      "description": "Zuvix PixVerse video generation provider plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "pixverse",
+          "label": "PixVerse"
+        },
+        "install": {
+          "clawhubSpec": "clawhub:@zuvix/pixverse-provider",
+          "npmSpec": "@zuvix/pixverse-provider",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.5.26"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/tokenjuice",
+      "description": "Zuvix tokenjuice exec output compaction plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "tokenjuice",
+          "label": "Tokenjuice"
+        },
+        "install": {
+          "clawhubSpec": "clawhub:@zuvix/tokenjuice",
+          "npmSpec": "@zuvix/tokenjuice",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.5.28"
+        }
+      }
+    },
+    {
+      "name": "@zuvix/voice-call",
+      "description": "Zuvix voice-call plugin",
+      "source": "official",
+      "kind": "plugin",
+      "zuvix": {
+        "plugin": {
+          "id": "voice-call",
+          "label": "Voice Call"
+        },
+        "install": {
+          "npmSpec": "@zuvix/voice-call",
+          "defaultChoice": "npm",
+          "minHostVersion": ">=2026.4.10"
+        }
+      }
+    }
+  ]
+}

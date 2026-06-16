@@ -7,7 +7,7 @@ create extension if not exists "supabase_vault" with schema vault;
 -- 1. Profiles Table
 -- ==========================================
 create table if not exists public.profiles (
-    id uuid default uuid_generate_v4() primary key,
+    id uuid default gen_random_uuid() primary key,
     user_id uuid references auth.users(id) on delete cascade not null unique,
     activepieces_project_id text,
     created_at timestamp with time zone default timezone('utc'::text, now()) not null,
@@ -30,10 +30,10 @@ create policy "Users can update own profile"
     using ( auth.uid() = user_id );
 
 -- ==========================================
--- 2. OpenClaw Memories Table
+-- 2. Zuvix Memories Table
 -- ==========================================
-create table if not exists public.openclaw_memories (
-    id uuid default uuid_generate_v4() primary key,
+create table if not exists public.zuvix_memories (
+    id uuid default gen_random_uuid() primary key,
     user_id uuid references auth.users(id) on delete cascade not null,
     key text not null,
     value jsonb not null default '{}'::jsonb,
@@ -42,23 +42,23 @@ create table if not exists public.openclaw_memories (
     unique(user_id, key)
 );
 
--- RLS for OpenClaw Memories
-alter table public.openclaw_memories enable row level security;
+-- RLS for Zuvix Memories
+alter table public.zuvix_memories enable row level security;
 
 create policy "Users can view own memories"
-    on public.openclaw_memories for select
+    on public.zuvix_memories for select
     using ( auth.uid() = user_id );
 
 create policy "Users can insert own memories"
-    on public.openclaw_memories for insert
+    on public.zuvix_memories for insert
     with check ( auth.uid() = user_id );
 
 create policy "Users can update own memories"
-    on public.openclaw_memories for update
+    on public.zuvix_memories for update
     using ( auth.uid() = user_id );
 
 create policy "Users can delete own memories"
-    on public.openclaw_memories for delete
+    on public.zuvix_memories for delete
     using ( auth.uid() = user_id );
 
 -- ==========================================

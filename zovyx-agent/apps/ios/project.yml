@@ -1,0 +1,362 @@
+name: Zuvix
+options:
+  bundleIdPrefix: ai.zuvix
+  deploymentTarget:
+    iOS: "18.0"
+  xcodeVersion: "16.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    ENABLE_APP_INTENTS_METADATA_GENERATION: NO
+
+packages:
+  ZuvixKit:
+    path: ../shared/ZuvixKit
+  Swabble:
+    path: ../swabble
+  WebRTC:
+    url: https://github.com/stasel/WebRTC.git
+    exactVersion: 147.0.0
+
+schemes:
+  Zuvix:
+    shared: true
+    build:
+      targets:
+        Zuvix: all
+    test:
+      targets:
+        - ZuvixTests
+        - ZuvixLogicTests
+  ZuvixLogicTests:
+    shared: true
+    build:
+      targets:
+        ZuvixLogicTests: all
+    test:
+      targets:
+        - ZuvixLogicTests
+
+targets:
+  Zuvix:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Signing.xcconfig
+      Release: Signing.xcconfig
+    sources:
+      - path: Sources
+    dependencies:
+      - target: ZuvixShareExtension
+        embed: true
+      - target: ZuvixActivityWidget
+        embed: true
+      - target: ZuvixWatchApp
+      - package: ZuvixKit
+      - package: ZuvixKit
+        product: ZuvixChatUI
+      - package: ZuvixKit
+        product: ZuvixProtocol
+      - package: Swabble
+        product: SwabbleKit
+      - package: WebRTC
+      - sdk: AppIntents.framework
+    preBuildScripts:
+      - name: SwiftFormat (lint)
+        basedOnDependencyAnalysis: false
+        inputFileLists:
+          - $(SRCROOT)/SwiftSources.input.xcfilelist
+        script: |
+          set -euo pipefail
+          export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+          if ! command -v swiftformat >/dev/null 2>&1; then
+            echo "error: swiftformat not found (brew install swiftformat)" >&2
+            exit 1
+          fi
+          swiftformat --lint --config "$SRCROOT/../../config/swiftformat" \
+            --unexclude "$SRCROOT/Sources,$SRCROOT/ShareExtension,$SRCROOT/ActivityWidget,$SRCROOT/WatchExtension,$SRCROOT/../shared/ZuvixKit,$SRCROOT/../swabble" \
+            --filelist "$SRCROOT/SwiftSources.input.xcfilelist"
+      - name: SwiftLint
+        basedOnDependencyAnalysis: false
+        inputFileLists:
+          - $(SRCROOT)/SwiftSources.input.xcfilelist
+        script: |
+          set -euo pipefail
+          export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+          if ! command -v swiftlint >/dev/null 2>&1; then
+            echo "error: swiftlint not found (brew install swiftlint)" >&2
+            exit 1
+          fi
+          swiftlint lint --config "$SRCROOT/.swiftlint.yml" --use-script-input-file-lists
+    settings:
+      base:
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_ENTITLEMENTS: Sources/Zuvix.entitlements
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        PRODUCT_BUNDLE_IDENTIFIER: "$(ZUVIX_APP_BUNDLE_ID)"
+        PROVISIONING_PROFILE_SPECIFIER: "$(ZUVIX_APP_PROFILE)"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "6.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+        SUPPORTS_LIVE_ACTIVITIES: YES
+        ENABLE_APPINTENTS_METADATA: NO
+        ENABLE_APP_INTENTS_METADATA_GENERATION: NO
+      configs:
+        Debug:
+          ZUVIX_PUSH_TRANSPORT: direct
+          ZUVIX_PUSH_DISTRIBUTION: local
+          ZUVIX_PUSH_RELAY_BASE_URL: ""
+          ZUVIX_PUSH_APNS_ENVIRONMENT: sandbox
+        Release:
+          ZUVIX_PUSH_TRANSPORT: direct
+          ZUVIX_PUSH_DISTRIBUTION: local
+          ZUVIX_PUSH_RELAY_BASE_URL: ""
+          ZUVIX_PUSH_APNS_ENVIRONMENT: production
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: Zuvix
+        CFBundleIconName: AppIcon
+        CFBundleURLTypes:
+          - CFBundleURLName: ai.zuvix.ios
+            CFBundleURLSchemes:
+              - zuvix
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        ZuvixCanonicalVersion: "$(ZUVIX_IOS_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UIBackgroundModes:
+          - audio
+          - remote-notification
+        BGTaskSchedulerPermittedIdentifiers:
+          - ai.zuvix.ios.bgrefresh
+        NSLocalNetworkUsageDescription: Zuvix discovers and connects to your Zuvix gateway on the local network.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoadsInWebContent: true
+          NSAllowsLocalNetworking: true
+        NSBonjourServices:
+          - _zuvix-gw._tcp
+        NSCameraUsageDescription: Zuvix can capture photos or short video clips when requested via the gateway.
+        NSCalendarsUsageDescription: Zuvix uses your calendars to show events and scheduling context when you enable calendar access.
+        NSCalendarsFullAccessUsageDescription: Zuvix uses your calendars to show events and scheduling context when you enable calendar access.
+        NSCalendarsWriteOnlyAccessUsageDescription: Zuvix uses your calendars to add events when you enable calendar access.
+        NSContactsUsageDescription: Zuvix uses your contacts so you can search and reference people while using the assistant.
+        NSLocationWhenInUseUsageDescription: Zuvix uses your location when you allow location sharing.
+        NSLocationAlwaysAndWhenInUseUsageDescription: Zuvix can share your location in the background when you enable Always.
+        NSMicrophoneUsageDescription: Zuvix uses the microphone for realtime chat, voice wake, and push-to-talk.
+        NSMotionUsageDescription: Zuvix may use motion data to support device-aware interactions and automations.
+        NSPhotoLibraryUsageDescription: Zuvix needs photo library access when you choose existing photos to share with your assistant.
+        NSRemindersFullAccessUsageDescription: Zuvix uses your reminders to list, add, and complete tasks when you enable reminders access.
+        NSSpeechRecognitionUsageDescription: Zuvix uses on-device speech recognition for talk mode and voice wake.
+        NSSupportsLiveActivities: true
+        ITSAppUsesNonExemptEncryption: false
+        ZuvixPushTransport: "$(ZUVIX_PUSH_TRANSPORT)"
+        ZuvixPushDistribution: "$(ZUVIX_PUSH_DISTRIBUTION)"
+        ZuvixPushRelayBaseURL: "$(ZUVIX_PUSH_RELAY_BASE_URL)"
+        ZuvixPushAPNsEnvironment: "$(ZUVIX_PUSH_APNS_ENVIRONMENT)"
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+  ZuvixShareExtension:
+    type: app-extension
+    platform: iOS
+    configFiles:
+      Debug: Signing.xcconfig
+      Release: Signing.xcconfig
+    sources:
+      - path: ShareExtension
+    dependencies:
+      - package: ZuvixKit
+      - sdk: AppIntents.framework
+    settings:
+      base:
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        ENABLE_APPINTENTS_METADATA: NO
+        ENABLE_APP_INTENTS_METADATA_GENERATION: NO
+        PRODUCT_BUNDLE_IDENTIFIER: "$(ZUVIX_SHARE_BUNDLE_ID)"
+        PROVISIONING_PROFILE_SPECIFIER: "$(ZUVIX_SHARE_PROFILE)"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "6.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+    info:
+      path: ShareExtension/Info.plist
+      properties:
+        CFBundleDisplayName: Zuvix Share
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).ShareViewController"
+          NSExtensionAttributes:
+            NSExtensionActivationRule:
+              NSExtensionActivationSupportsText: true
+              NSExtensionActivationSupportsWebURLWithMaxCount: 1
+              NSExtensionActivationSupportsImageWithMaxCount: 10
+              NSExtensionActivationSupportsMovieWithMaxCount: 1
+
+  ZuvixActivityWidget:
+    type: app-extension
+    platform: iOS
+    configFiles:
+      Debug: Signing.xcconfig
+      Release: Signing.xcconfig
+    sources:
+      - path: ActivityWidget
+      - path: Sources/LiveActivity/ZuvixActivityAttributes.swift
+    dependencies:
+      - sdk: WidgetKit.framework
+      - sdk: ActivityKit.framework
+    settings:
+      base:
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        PRODUCT_BUNDLE_IDENTIFIER: "$(ZUVIX_ACTIVITY_WIDGET_BUNDLE_ID)"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "6.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+        SUPPORTS_LIVE_ACTIVITIES: YES
+    info:
+      path: ActivityWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Zuvix Activity
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"
+        NSSupportsLiveActivities: true
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+
+  ZuvixWatchApp:
+    type: application.watchapp2
+    platform: watchOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: WatchApp
+    dependencies:
+      - target: ZuvixWatchExtension
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
+    attributes:
+      DevelopmentTeam: "$(ZUVIX_DEVELOPMENT_TEAM)"
+      ProvisioningStyle: "$(ZUVIX_CODE_SIGN_STYLE)"
+    settings:
+      base:
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        ENABLE_APPINTENTS_METADATA: NO
+        ENABLE_APP_INTENTS_METADATA_GENERATION: NO
+        PRODUCT_BUNDLE_IDENTIFIER: "$(ZUVIX_WATCH_APP_BUNDLE_ID)"
+        PROVISIONING_PROFILE_SPECIFIER: "$(ZUVIX_WATCH_APP_PROFILE)"
+    info:
+      path: WatchApp/Info.plist
+      properties:
+        CFBundleDisplayName: Zuvix
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"
+        WKCompanionAppBundleIdentifier: "$(ZUVIX_APP_BUNDLE_ID)"
+        WKWatchKitApp: true
+
+  ZuvixWatchExtension:
+    type: watchkit2-extension
+    platform: watchOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: WatchExtension/Sources
+    dependencies:
+      - sdk: AppIntents.framework
+      - sdk: WatchConnectivity.framework
+      - sdk: UserNotifications.framework
+    configFiles:
+      Debug: Config/Signing.xcconfig
+      Release: Config/Signing.xcconfig
+    attributes:
+      DevelopmentTeam: "$(ZUVIX_DEVELOPMENT_TEAM)"
+      ProvisioningStyle: "$(ZUVIX_CODE_SIGN_STYLE)"
+    settings:
+      base:
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        PRODUCT_BUNDLE_IDENTIFIER: "$(ZUVIX_WATCH_EXTENSION_BUNDLE_ID)"
+        PROVISIONING_PROFILE_SPECIFIER: "$(ZUVIX_WATCH_EXTENSION_PROFILE)"
+    info:
+      path: WatchExtension/Info.plist
+      properties:
+        CFBundleDisplayName: Zuvix
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"
+        NSExtension:
+          NSExtensionAttributes:
+            WKAppBundleIdentifier: "$(ZUVIX_WATCH_APP_BUNDLE_ID)"
+          NSExtensionPointIdentifier: com.apple.watchkit
+
+  ZuvixTests:
+    type: bundle.unit-test
+    platform: iOS
+    configFiles:
+      Debug: Signing.xcconfig
+      Release: Signing.xcconfig
+    sources:
+      - path: Tests
+        excludes:
+          - Logic
+    dependencies:
+      - target: Zuvix
+      - package: Swabble
+        product: SwabbleKit
+      - sdk: AppIntents.framework
+    settings:
+      base:
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        PRODUCT_BUNDLE_IDENTIFIER: ai.zuvix.ios.tests
+        ENABLE_APP_INTENTS_METADATA_GENERATION: NO
+        SWIFT_VERSION: "6.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Zuvix.app/Zuvix"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+    info:
+      path: Tests/Info.plist
+      properties:
+        CFBundleDisplayName: ZuvixTests
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"
+
+  ZuvixLogicTests:
+    type: bundle.unit-test
+    platform: iOS
+    configFiles:
+      Debug: Signing.xcconfig
+      Release: Signing.xcconfig
+    sources:
+      - path: Tests/Logic
+    dependencies:
+      - package: ZuvixKit
+    settings:
+      base:
+        CODE_SIGN_IDENTITY: "Apple Development"
+        CODE_SIGN_STYLE: "$(ZUVIX_CODE_SIGN_STYLE)"
+        DEVELOPMENT_TEAM: "$(ZUVIX_DEVELOPMENT_TEAM)"
+        PRODUCT_BUNDLE_IDENTIFIER: ai.zuvix.ios.logic-tests
+        ENABLE_APP_INTENTS_METADATA_GENERATION: NO
+        SWIFT_EMIT_CONST_VALUE_PROTOCOLS: ""
+        SWIFT_VERSION: "6.0"
+        SWIFT_STRICT_CONCURRENCY: complete
+    info:
+      path: Tests/Info.plist
+      properties:
+        CFBundleDisplayName: ZuvixLogicTests
+        CFBundleShortVersionString: "$(ZUVIX_MARKETING_VERSION)"
+        CFBundleVersion: "$(ZUVIX_BUILD_VERSION)"

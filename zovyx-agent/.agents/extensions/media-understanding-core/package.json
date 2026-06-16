@@ -1,0 +1,11 @@
+{
+  "name": "@zuvix/media-understanding-core",
+  "version": "2026.6.2",
+  "private": true,
+  "description": "Zuvix media understanding runtime package",
+  "type": "module",
+  "devDependencies": {
+    "@zuvix/plugin-sdk": "workspace:*"
+  },
+  "zuvix": {}
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zuvix Debugging"
+  short_description: "Debug model, tool, stream, and live behavior"
+  default_prompt: "Use $zuvix-debugging to identify the right Zuvix debug boundary, turn on targeted logs, and choose the narrowest local or Crabbox proof."
