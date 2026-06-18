@@ -152,11 +152,30 @@ function sourcePackageAlias(packageId: string, subpath?: string): ControlUiViteA
 
 export function resolveSourcePackageAliasesForVite(): ControlUiViteAlias[] {
   return [
+    // normalization-core
     sourcePackageAlias("normalization-core", "number-coercion"),
     sourcePackageAlias("normalization-core", "record-coerce"),
     sourcePackageAlias("normalization-core", "string-coerce"),
     sourcePackageAlias("normalization-core", "string-normalization"),
     sourcePackageAlias("normalization-core"),
+    // net-policy
+    sourcePackageAlias("net-policy", "redact-sensitive-url"),
+    sourcePackageAlias("net-policy", "ip"),
+    sourcePackageAlias("net-policy", "ipv4"),
+    sourcePackageAlias("net-policy", "url-userinfo"),
+    sourcePackageAlias("net-policy"),
+    // media-core
+    sourcePackageAlias("media-core", "constants"),
+    sourcePackageAlias("media-core", "base64"),
+    sourcePackageAlias("media-core", "content-length"),
+    sourcePackageAlias("media-core", "file-name"),
+    sourcePackageAlias("media-core", "inbound-path-policy"),
+    sourcePackageAlias("media-core", "inline-image-data-url"),
+    sourcePackageAlias("media-core", "media-source-url"),
+    sourcePackageAlias("media-core", "mime"),
+    sourcePackageAlias("media-core", "read-byte-stream-with-limit"),
+    sourcePackageAlias("media-core", "read-response-with-limit"),
+    sourcePackageAlias("media-core"),
   ];
 }
 

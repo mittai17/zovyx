@@ -839,6 +839,15 @@ export class ZuvixApp extends LitElement {
 
   protected override firstUpdated() {
     handleFirstUpdated(this as unknown as Parameters<typeof handleFirstUpdated>[0]);
+    // Auto-connect in local dev mode: gateway runs on localhost with allowInsecureAuth
+    if (
+      !this.connected &&
+      (location.hostname === "localhost" || location.hostname === "127.0.0.1") &&
+      !this.settings.token.trim() &&
+      !this.password.trim()
+    ) {
+      this.connect();
+    }
   }
 
   override disconnectedCallback() {

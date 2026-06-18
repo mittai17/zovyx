@@ -140,7 +140,6 @@ allowBuilds:
   "@zuvix/proxyline": true
   clawpdf: true
   rastermill: true
-  zuvix: set this to true or false
 
 packageExtensions:
   baileys:

@@ -6696,3 +6696,138 @@ details[open] > .ov-expandable-toggle::after {
     gap: 4px;
   }
 }
+
+/* ===========================================
+   Modal Overlay
+   =========================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 16px;
+}
+
+.modal-card {
+  width: min(480px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: scale-in 0.25s var(--ease-out);
+}
+
+.modal-card--upgrade {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: 0 0 50px -12px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.modal-card__header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-card__header--credentials {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--info) 10%, transparent), color-mix(in srgb, var(--ok) 10%, transparent));
+}
+
+.modal-card__header--credentials::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin: -24px -24px 16px;
+  background: linear-gradient(90deg, var(--info), var(--ok));
+}
+
+.modal-card__header--upgrade {
+  background: linear-gradient(135deg, color-mix(in srgb, #fbbf24 10%, transparent), color-mix(in srgb, #f97316 10%, transparent));
+}
+
+.modal-card__header--upgrade::before {
+  content: "";
+  display: block;
+  height: 3px;
+  margin: -24px -24px 16px;
+  background: linear-gradient(90deg, #fbbf24, #f97316);
+}
+
+.modal-card__header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.modal-card__header p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.modal-card__body {
+  padding: 24px;
+}
+
+.modal-card__footer {
+  display: flex;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+}
+
+.modal-card__footer .btn {
+  min-width: 100px;
+}
+
+/* Upgrade Plan Card */
+.upgrade-plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.upgrade-plan__info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.upgrade-plan__info p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.upgrade-plan__price {
+  text-align: right;
+}
+
+.upgrade-plan__amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.upgrade-plan__period {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.upgrade-plan__button {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  color: #000;
+  font-weight: 700;
+}
+
+.upgrade-plan__button:hover {
+  transform: scale(1.02);
+}

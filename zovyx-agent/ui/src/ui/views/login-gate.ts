@@ -3,6 +3,7 @@ import { html } from "lit";
 import { ConnectErrorDetailCodes } from "../../../../packages/gateway-protocol/src/connect-error-details.js";
 import { t } from "../../i18n/index.ts";
 import type { AppViewState } from "../app-view-state.ts";
+import { saveLocalUserIdentity } from "../storage.ts";
 import { buildExternalLinkRel, EXTERNAL_LINK_TARGET } from "../external-link.ts";
 import { icons } from "../icons.ts";
 import { normalizeBasePath } from "../navigation.ts";
@@ -14,6 +15,7 @@ import {
   resolvePairingHint,
   shouldShowInsecureContextHint,
 } from "./overview-hints.ts";
+import "./supabase-login.ts";
 
 type LoginFailureKind =
   | "auth-required"
@@ -393,6 +395,23 @@ export function renderLoginGate(state: AppViewState) {
             >
           </div>
         </div>
+        <details class="login-gate__cloud-auth" style="margin-top:1.5rem;border-top:1px solid var(--border-color);padding-top:1rem;">
+          <summary style="cursor:pointer;color:var(--text-color-muted);font-size:0.875rem;user-select:none;">
+            Sign in with Cloud Account
+          </summary>
+          <div style="margin-top:0.75rem;">
+            <supabase-login inline
+              @auth-success=${(e: CustomEvent) => {
+                const { name } = e.detail;
+                if (name) {
+                  saveLocalUserIdentity({ name, avatar: null });
+                  state.userName = name;
+                  (e.target as HTMLElement).closest("details")?.removeAttribute("open");
+                }
+              }}
+            ></supabase-login>
+          </div>
+        </details>
       </div>
     </div>
   `;

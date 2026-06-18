@@ -1,0 +1,29 @@
+{
+  "name": "@zuvix/fs-safe",
+  "version": "0.3.0",
+  "description": "Fs-safe workspace stub",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    "./config": "./src/config.ts",
+    "./root": "./src/root.ts",
+    "./path": "./src/path.ts",
+    "./walk": "./src/walk.ts",
+    "./advanced": "./src/advanced.ts",
+    "./errors": "./src/errors.ts",
+    "./secure-file": "./src/secure-file.ts",
+    "./json": "./src/json.ts",
+    "./archive": "./src/archive.ts",
+    "./file-lock": "./src/file-lock.ts",
+    "./store": "./src/store.ts",
+    "./temp": "./src/temp.ts",
+    "./atomic": "./src/atomic.ts",
+    "./permissions": "./src/permissions.ts",
+    "./test-hooks": "./src/test-hooks.ts",
+    "./secret": "./src/secret.ts"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {}
+}
